@@ -1,0 +1,53 @@
+generator client {
+  provider   = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Card {
+  id Int @id @default(autoincrement())
+  themeId BigInt @map("theme_id")
+  designId Int @map("design_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  theme Theme @relation(fields: [themeId], references: [id])
+  design Design @relation(fields: [designId], references: [id])
+}
+
+model Theme {
+  id BigInt @id @default(autoincrement())
+  name String @db.VarChar(100)
+  question String @db.VarChar(100)
+  ask String @db.VarChar(255)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  card Card[]
+}
+
+model Design {
+  id Int @id @default(autoincrement())
+  textColor TextColor
+  font Font
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  card Card[]
+}
+
+enum TextColor {
+  ROXO 
+  AZUL
+  VERDE
+  ROSA
+  LARANJA
+}
+
+enum Font {
+  ARIAL
+  ROBOTO
+  INTER
+}
