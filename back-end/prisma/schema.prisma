@@ -6,36 +6,62 @@ datasource db {
   provider = "postgresql"
 }
 
-model Card {
+model Themes {
   id Int @id @default(autoincrement())
-  themeId BigInt @map("theme_id")
-  designId Int @map("design_id")
+  name String @db.VarChar(100)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  theme Theme @relation(fields: [themeId], references: [id])
-  design Design @relation(fields: [designId], references: [id])
+  card FlashCard[] // Um tema tem muitos cards
+  Question Questions[]
 }
 
-model Theme {
+model FlashCard {
   id BigInt @id @default(autoincrement())
-  name String @db.VarChar(100)
   question String @db.VarChar(100)
   ask String @db.VarChar(255)
+  design Design?
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  card Card[]
+  themeId Int @map("theme_id")
+  themes Themes @relation(fields: [themeId], references: [id])
 }
 
 model Design {
   id Int @id @default(autoincrement())
+  cardId BigInt @unique
+  questionsId BigInt @unique
   textColor TextColor
   font Font
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  card Card[]
+  card FlashCard @relation(fields: [cardId], references: [id])
+  question Questions @relation(fields: [questionsId], references: [id])
+}
+
+model Questions {
+  id BigInt @id @default(autoincrement())
+  // significado para enunciado de questao
+  questionStem String @db.Text()
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // chaves estrangeiras
+  themeId Int
+  design Design?
+  alternatives Alternatives[]
+  
+  theme Themes @relation(fields: [themeId], references: [id])
+}
+
+model Alternatives {
+  id BigInt @id @default(autoincrement())
+  questionId BigInt
+  options String
+
+  question Questions @relation(fields: [questionId], references: [id])
 }
 
 enum TextColor {
