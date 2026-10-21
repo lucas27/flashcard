@@ -1,13 +1,15 @@
 export type AlternativesProps = {
+    id: bigint,
     questionId: bigint,
-    options: string
+    options: string,
+    isCorrect: boolean
 }
 
 export class Alternatives {
     private constructor(private props: AlternativesProps) {}
 
-    public static create(questionId: bigint, options: string) {
-        return new Alternatives({ questionId: questionId, options: options });
+    public static create(id: bigint, questionId: bigint, options: string, isCorrect: boolean) {
+        return new Alternatives({id: id, questionId: questionId, options: options, isCorrect: isCorrect });
     }
 
     public get options() {
