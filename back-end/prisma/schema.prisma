@@ -7,7 +7,8 @@ datasource db {
 }
 
 model Themes {
-  id Int @id @default(autoincrement())
+  // id Int @id @default(autoincrement())
+  id Int @id
   name String @db.VarChar(100)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -17,7 +18,7 @@ model Themes {
 }
 
 model FlashCard {
-  id BigInt @id @default(autoincrement())
+  id BigInt @id
   question String @db.VarChar(100)
   ask String @db.VarChar(255)
   design Design?
@@ -29,7 +30,7 @@ model FlashCard {
 }
 
 model Design {
-  id Int @id @default(autoincrement())
+  id Int @id 
   cardId BigInt @unique
   questionsId BigInt @unique
   textColor TextColor
@@ -42,7 +43,7 @@ model Design {
 }
 
 model Questions {
-  id BigInt @id @default(autoincrement())
+  id BigInt @id 
   // significado para enunciado de questao
   questionStem String @db.Text()
   createdAt DateTime @default(now()) @map("created_at")
@@ -57,9 +58,10 @@ model Questions {
 }
 
 model Alternatives {
-  id BigInt @id @default(autoincrement())
+  id BigInt @id 
   questionId BigInt
   options String
+  isCorrect Boolean
 
   question Questions @relation(fields: [questionId], references: [id])
 }
