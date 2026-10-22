@@ -41,6 +41,10 @@ export class FlashCard {
         });
     }
     
+    public get id() {
+        return this.props.id;
+    }
+
     public get question() {
         return this.props.question;
     }

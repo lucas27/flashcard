@@ -35,6 +35,18 @@ export class CardDesign {
         }); 
     }
 
+    public get id() {
+        return this.props.id;
+    }
+
+    public get textColor() {
+        return this.props.textColor;
+    }
+
+    public get font() {
+        return this.props.font;
+    }
+
     public changeTextColor(textColor: TextColorType): void {
         this.props.textColor = textColor;
     }
