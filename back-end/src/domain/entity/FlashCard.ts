@@ -1,10 +1,10 @@
-import { Design } from "./Design";
+import { CardDesign } from "./CardDesign";
 
 export type FlashCardProps = {
-    readonly id: bigint,
+    readonly id?: bigint,
     question: string,
     ask: string,
-    design: Design,
+    design: CardDesign,
     themeId: number
 }
 
@@ -12,10 +12,24 @@ export class FlashCard {
     private constructor(private props: FlashCardProps) {}
 
     public static create(
+        question: string,
+        ask: string,
+        design: CardDesign,
+        themeId: number
+    ) {
+        return new FlashCard({
+            question: question,
+            ask: ask,
+            design: design,
+            themeId: themeId
+        });
+    }
+
+    public static with(
         id: bigint,
         question: string,
         ask: string,
-        design: Design,
+        design: CardDesign,
         themeId: number
     ) {
         return new FlashCard({
@@ -26,7 +40,7 @@ export class FlashCard {
             themeId: themeId
         });
     }
-
+    
     public get question() {
         return this.props.question;
     }

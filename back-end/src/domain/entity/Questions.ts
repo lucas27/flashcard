@@ -1,11 +1,11 @@
 import { Alternatives } from "./Alternatives";
-import { Design } from "./Design";
+import { QuestionDesign } from "./QuestionDesign";
 
 export type QuestionsProps = {
-    id: bigint,
+    readonly id?: bigint,
     questionStem: string,
     themeId: number,
-    design: Design,
+    design: QuestionDesign,
     alternatives: Alternatives[]
 };
 
@@ -13,10 +13,23 @@ export class Questions {
     private constructor(private props: QuestionsProps) {}
 
     public static create(
+        questionStem: string,
+        themeId: number,
+        design: QuestionDesign,
+        alternatives: Alternatives[]
+    ) {
+        return new Questions({
+            questionStem: questionStem,
+            themeId: themeId,
+            design: design,
+            alternatives: alternatives
+        });
+    }
+    public static with(
         id: bigint,
         questionStem: string,
         themeId: number,
-        design: Design,
+        design: QuestionDesign,
         alternatives: Alternatives[]
     ) {
         return new Questions({
@@ -25,7 +38,7 @@ export class Questions {
             themeId: themeId,
             design: design,
             alternatives: alternatives
-        });
+        })
     }
 
     public get id() {
