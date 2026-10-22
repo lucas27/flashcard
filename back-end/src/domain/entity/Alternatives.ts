@@ -1,5 +1,5 @@
 export type AlternativesProps = {
-    id: bigint,
+    readonly id?: bigint,
     questionId: bigint,
     options: string,
     isCorrect: boolean
@@ -8,7 +8,11 @@ export type AlternativesProps = {
 export class Alternatives {
     private constructor(private props: AlternativesProps) {}
 
-    public static create(id: bigint, questionId: bigint, options: string, isCorrect: boolean) {
+    public static create(questionId: bigint, options: string, isCorrect: boolean) {
+        return new Alternatives({questionId: questionId, options: options, isCorrect: isCorrect });
+    }
+
+    public static with(id: bigint, questionId: bigint, options: string, isCorrect: boolean) {
         return new Alternatives({id: id, questionId: questionId, options: options, isCorrect: isCorrect });
     }
 

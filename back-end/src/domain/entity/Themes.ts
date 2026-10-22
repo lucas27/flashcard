@@ -2,27 +2,19 @@ import { FlashCard } from "./FlashCard";
 import { Questions } from "./Questions";
 
 export type ThemesProps = {
-    readonly id: number,
-    name: string,
-    card: FlashCard[],
-    question: Questions[]
+    readonly id?: number,
+    name: string
 }
 
 export class Themes {
     private constructor(private props: ThemesProps) {}
 
-    public static create(
-        id: number,
-        name: string,
-        card: FlashCard[],
-        question: Questions[]
-    ) {
-        return new Themes({
-            id: id,
-            name: name,
-            card: card,
-            question: question
-        });
+    public static create( name: string ) {
+        return new Themes({ name: name });
+    }
+
+    public static with(id: number, name: string) {
+        return new Themes({id, name});
     }
 
     public get id() {
