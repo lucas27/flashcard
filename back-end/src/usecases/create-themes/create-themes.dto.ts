@@ -5,6 +5,4 @@ export type CreateThemesInputDto = {
 export type CreateThemesOutputDto = {
     id: number;
     name: string;
-    cardCount: number 
-    questionsCount: number 
 };
