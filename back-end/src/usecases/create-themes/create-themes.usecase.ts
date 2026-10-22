@@ -19,8 +19,7 @@ export class CreateThemesUsecase implements Usecase<CreateThemesInputDto, Create
         await this.themesGateway.save(theme);
 
         const output: CreateThemesOutputDto = {
-            id: theme.id!, 
-            name: theme.name
+            id: theme.id! 
         }
 
         return output;
