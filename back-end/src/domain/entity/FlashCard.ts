@@ -50,7 +50,11 @@ export class FlashCard {
     }
 
     public get ask() {
-        return this.props.ask
+        return this.props.ask;
+    }
+
+    public get design() {
+        return this.props.design;
     }
     
     public changeQuestion(question: string): void {
