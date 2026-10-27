@@ -16,10 +16,10 @@ export class CreateThemesUsecase implements Usecase<CreateThemesInputDto, Create
     }: CreateThemesInputDto): Promise<CreateThemesOutputDto> {
         const theme = Themes.create(name);
 
-        await this.themesGateway.save(theme);
+        const saveId = await this.themesGateway.save(theme);
 
         const output: CreateThemesOutputDto = {
-            id: theme.id! 
+            id: saveId! 
         }
 
         return output;
