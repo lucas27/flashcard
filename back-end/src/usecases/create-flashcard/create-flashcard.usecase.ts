@@ -16,20 +16,20 @@ export class CreateFlashCardUsecase implements Usecase<CreateFlashCardInputDto, 
         
         const flashCard = FlashCard.create(question, ask, cardDesign, themeId);
         
-        await this.flashCardGateway.save(flashCard);
+        const saveIds = await this.flashCardGateway.save(flashCard);
 
-        const output = this.presentOutput(flashCard, cardDesign);
+        const output = this.presentOutput(saveIds);
         
         return output
     }
 
     // testando outras formas de fazer
     // faz sentido devolver id, ao inves de entregar tudo. No list faz sentido pegar todo os dados
-    private presentOutput(flashCard: FlashCard, design: CardDesign): CreateFlashCardOutputDto {
+    private presentOutput(input: CreateFlashCardOutputDto): CreateFlashCardOutputDto {
         const output: CreateFlashCardOutputDto = {
-            id: flashCard.id!,
+            id: input.id,
             design: {
-                id: design.id!
+                id: input.design.id
             }
         }
 
