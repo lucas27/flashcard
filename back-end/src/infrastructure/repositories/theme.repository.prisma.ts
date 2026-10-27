@@ -9,12 +9,13 @@ export class ThemeRepositoryPrisma implements ThemesGateway {
         return new ThemeRepositoryPrisma(prismaClient);
     }
 
-    public async save(themes: Themes): Promise<void> {
-        await this.prismaClient.themes.create({
+    public async save(themes: Themes): Promise<number> {
+        const createdTheme = await this.prismaClient.themes.create({
             data: {
                 name: themes.name
             }
-        })
+        });
+        return createdTheme.id;
     }
 
     public async list(): Promise<Themes[]> {
