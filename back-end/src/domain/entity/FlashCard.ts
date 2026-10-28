@@ -57,6 +57,10 @@ export class FlashCard {
         return this.props.design;
     }
     
+    public get themeId() {
+        return this.props.themeId;
+    }
+
     public changeQuestion(question: string): void {
         this.props.question = question;
     }
