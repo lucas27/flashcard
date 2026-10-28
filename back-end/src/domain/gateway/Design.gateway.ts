@@ -1,7 +1,7 @@
-import { Design } from "../entity/Design";
+import { CardDesign } from "../entity/CardDesign";
 
 export interface DesignGateway {
     // temporario
-    save(design: Design): Promise<Design>;
-    findById(id: number): Promise<Design>;
+    save(design: CardDesign): Promise<CardDesign>;
+    findById(id: number): Promise<CardDesign>;
 }
