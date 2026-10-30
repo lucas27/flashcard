@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { CreateFlashCardUsecase } from "../../../../../usecases/create-flashcard/create-flashcard.usecase";
 import { HttpMethod, Route } from "../route";
-import { CreateFlashCardInputDto } from "../../../../../usecases/create-flashcard/create-flashcard.dto";
+import { CreateFlashCardInputDto, CreateFlashCardOutputDto } from "../../../../../usecases/create-flashcard/create-flashcard.dto";
 import { CreateFlashcardResponseDto } from "./create-flashcard.route.dto";
 
 export class CreateFlashcardRoute implements Route {
@@ -13,7 +13,7 @@ export class CreateFlashcardRoute implements Route {
 
     public static create(createflashcardService: CreateFlashCardUsecase) {
         return new CreateFlashcardRoute(
-            "/themes",
+            "/flashcard",
             HttpMethod.POST,
             createflashcardService
         );
@@ -30,7 +30,7 @@ export class CreateFlashcardRoute implements Route {
                 themeId
             }
 
-            const output: CreateFlashcardResponseDto = await this.createflashcardService.execute(input);
+            const output = await this.createflashcardService.execute(input);
             
             const responseBody = this.present(output);
 
@@ -46,9 +46,9 @@ export class CreateFlashcardRoute implements Route {
         return this.method;
     }
 
-    private present(input: CreateFlashcardResponseDto): CreateFlashcardResponseDto {
+    private present(input: CreateFlashCardOutputDto): CreateFlashcardResponseDto {
         const response = { 
-            id: input.id,
+            id: input.id.toString(),
             design: {
                 id: input.design.id
             } 
