@@ -21,9 +21,6 @@ export class FlashCardRepositoryPrisma implements FlashCardGateway {
                 question: flashCard.question,
                 ask: flashCard.ask,
                 design: {
-                    connect: {
-                        id: Number(flashCard.id!)   
-                    },
                     create: {
                         textColor: prismaTextColorEnum,
                         font: prismaFontEnum
