@@ -1,5 +1,5 @@
 export type CreateFlashcardResponseDto = {
-    id: bigint,
+    id: string,
     design: {
         id: number
     }
