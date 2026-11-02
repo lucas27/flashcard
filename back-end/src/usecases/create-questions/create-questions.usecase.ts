@@ -19,18 +19,21 @@ export class CreateQuestionsUsecase implements Usecase<CreateQuestionsInputDto, 
 
         const question = Questions.create(questionStem, themeId, questionDesign, questionsAlternatives);
 
-        await this.questionsGateway.save(question);
+        const questionId = await this.questionsGateway.save(question);
 
-        const output = this.presentOutput(question, questionsAlternatives, questionDesign);
+        const output = this.presentOutput(questionId);
         
         return output; 
     } 
 
-    public presentOutput(question: Questions, alternatives: Alternatives[], questionDesign: QuestionDesign): CreateQuestionsOutputDto {
+    // dificil, mas não impossivel de entender
+    // ele vai retornar os ids
+    public presentOutput(input: CreateQuestionsOutputDto ): CreateQuestionsOutputDto {
         return {
-            id: question.id!,
-            design: { id: questionDesign.id! },
-            alternatives: alternatives.map(alt => ({id: alt.id!}))
+            id: input.id!,
+            design: { id: input.design.id },
+            alternatives: input.alternatives.map(alt => ({ id: alt.id })),
+            themeId: input.themeId
         }
     } 
 }
