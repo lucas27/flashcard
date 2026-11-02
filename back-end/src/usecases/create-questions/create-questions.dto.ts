@@ -21,5 +21,6 @@ export type CreateQuestionsOutputDto = {
     }
     alternatives: {
         id: bigint
-    }[]
+    }[],
+    themeId: number
 }
