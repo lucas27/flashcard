@@ -24,6 +24,10 @@ export class Alternatives {
         return this.props.options;
     }
 
+    public get isCorrect() {
+        return this.props.isCorrect;
+    }
+
     public changeOptions(options: string): void {
         this.props.options = options;
     }
