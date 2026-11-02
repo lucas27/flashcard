@@ -49,6 +49,18 @@ export class Questions {
         return this.props.questionStem;
     }
 
+    public get themeId() {
+        return this.props.themeId;
+    }
+
+    public get design() {
+        return this.props.design;
+    }
+
+    public get alternatives() {
+        return this.props.alternatives;
+    }
+
     public changeQuestionStem(questionStem: string) {
         this.props.questionStem = questionStem;
     }
