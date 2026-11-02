@@ -3,6 +3,7 @@ import { CreateThemesRoute } from "./infrastructure/api/fastify/routes/themes/cr
 import { ListThemesRoute } from "./infrastructure/api/fastify/routes/themes/list-themes.fastify.route";
 import { ThemeRepositoryPrisma } from "./infrastructure/repositories/theme.repository.prisma";
 import { FlashCardFactory } from "./modules/flashcard/factories/flashcard.factory";
+import { QuestionsFactory } from "./modules/questions/factories/questions.factory";
 import { ThemesFactory } from "./modules/themes/factories/themes.factory";
 import prisma from "./package/prisma/prisma";
 import { CreateThemesUsecase } from "./usecases/create-themes/create-themes.usecase";
@@ -11,6 +12,7 @@ import { ListThemesUsecase } from "./usecases/list-themes/list-themes.usecase";
 function main() {
   
   const allRoutes = [
+    ...QuestionsFactory.makeRoutes(),
     ...FlashCardFactory.makeRoutes(),
     ...ThemesFactory.makeRoutes()
   ];
