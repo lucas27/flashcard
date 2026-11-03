@@ -66,7 +66,7 @@ model QuestionDesign {
 model Questions {
   id          BigInt   @id @default(autoincrement())
   // significado para enunciado de questao
-  questionStem String   @db.Text()
+  questionStem String  @unique @db.Text()
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
@@ -84,7 +84,7 @@ model Questions {
 model Alternatives {
   id         BigInt  @id @default(autoincrement())
   questionId BigInt @map("question_id")
-  options    String
+  options    String @unique
   isCorrect  Boolean
 
   question Questions @relation(fields: [questionId], references: [id])

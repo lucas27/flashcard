@@ -80,6 +80,12 @@ CREATE UNIQUE INDEX "card_design_cardId_key" ON "card_design"("cardId");
 -- CreateIndex
 CREATE UNIQUE INDEX "question_design_questions_id_key" ON "question_design"("questions_id");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "questions_questionStem_key" ON "questions"("questionStem");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "alternatives_options_key" ON "alternatives"("options");
+
 -- AddForeignKey
 ALTER TABLE "flashcard" ADD CONSTRAINT "flashcard_theme_id_fkey" FOREIGN KEY ("theme_id") REFERENCES "themes"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
