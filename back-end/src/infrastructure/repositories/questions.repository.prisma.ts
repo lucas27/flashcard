@@ -45,7 +45,7 @@ export class QuestionsRepositoryPrisma implements QuestionsGateway {
             design: {
                 id: createdQuestions.design?.id!
             },
-            alternatives: questions.alternatives.map(alt => ({ id: alt.id! })),
+            alternatives: createdQuestions.alternatives.map(alt => ({ id: alt.id! })),
             themeId: questions.themeId
         };
     }
