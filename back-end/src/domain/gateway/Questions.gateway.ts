@@ -3,5 +3,6 @@ import { QuestionsGatewayDto } from "./Questions.gateway.dto";
 
 export interface QuestionsGateway {
     save(questions: Questions): Promise<QuestionsGatewayDto>;
-    list(): Promise<Questions[]>; 
+    list(): Promise<Questions[]>;
+    findAllByThemeId(themeId: number): Promise<Questions[]>; 
 }
