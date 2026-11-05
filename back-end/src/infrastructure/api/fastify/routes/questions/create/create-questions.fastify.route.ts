@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CreateQuestionsUsecase } from "../../../../../usecases/create-questions/create-questions.usecase";
-import { HttpMethod, Route } from "../route";
-import { CreateQuestionsInputDto, CreateQuestionsOutputDto } from "../../../../../usecases/create-questions/create-questions.dto";
+import { CreateQuestionsUsecase } from "../../../../../../usecases/create-questions/create-questions.usecase";
+import { HttpMethod, Route } from "../../route";
+import { CreateQuestionsInputDto, CreateQuestionsOutputDto } from "../../../../../../usecases/create-questions/create-questions.dto";
 import { CreateQuestionsResponseDto } from "./create-questions.route.dto";
 
 export class CreateQuestionsRoute implements Route {
