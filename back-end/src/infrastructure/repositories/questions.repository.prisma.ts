@@ -84,4 +84,41 @@ export class QuestionsRepositoryPrisma implements QuestionsGateway {
         return questionsList;
     }
 
+    public async findAllByThemeId(themeId: number): Promise<Questions[]> {
+        const questions = await this.prismaClient.questions.findMany({
+            where: {
+                themeId: Number(themeId)
+            },
+            include: {
+                design: true,
+                alternatives: true
+            }
+        })
+
+        const findAllQuestions = await questions.map(qt => {
+            const prismaTextColorEnum = DesignMapper.toDomainEnumTextColor(qt.design!.textColor);
+            const prismaFontEnum = DesignMapper.toDomainEnumFont(qt.design!.font);
+
+            const design = QuestionDesign.with(
+                qt.design!.id,
+                qt.design!.questionsId,
+                prismaTextColorEnum,
+                prismaFontEnum
+            );
+
+            const alternatives = qt.alternatives!.map(alt => {
+                return Alternatives.with(
+                    alt.id,
+                    alt.questionId,
+                    alt.options,
+                    alt.isCorrect
+                );
+            });
+
+            return Questions.with(qt.id, qt.questionStem, qt.themeId, design, alternatives);
+        })
+
+        return findAllQuestions;
+    }
+
 }
