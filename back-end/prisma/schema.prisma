@@ -20,6 +20,19 @@ model Themes {
   @@map("themes")
 }
 
+model SubTopics {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  card    FlashCard[]
+  Question Questions[]
+
+  @@schema("flashcard")
+  @@map("sub_topics")
+}
+
 model FlashCard {
   id        BigInt   @id @default(autoincrement())
   question  String   @db.VarChar(100)
@@ -28,8 +41,11 @@ model FlashCard {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  themeId Int    @map("theme_id")
-  themes  Themes @relation(fields: [themeId], references: [id])
+  themeId     Int       @map("theme_id")
+  subTopicId  Int       @map("sub_topic_id")
+  
+  themes      Themes    @relation(fields: [themeId], references: [id])
+  subtopic    SubTopics @relation(fields: [subTopicId], references: [id])
 
   @@schema("flashcard")
   @@map("flashcard")
@@ -71,11 +87,15 @@ model Questions {
   updatedAt   DateTime @updatedAt @map("updated_at")
 
   // chaves estrangeiras
-  themeId     Int @map("theme_id")
   design      QuestionDesign?
   alternatives Alternatives[]
 
-  theme Themes @relation(fields: [themeId], references: [id])
+  themeId     Int         @map("theme_id")
+  subTopicId  Int         @map("sub_topic_id")
+  
+  theme       Themes      @relation(fields: [themeId], references: [id])
+  subtopic    SubTopics   @relation(fields: [subTopicId], references: [id])
+
 
   @@schema("flashcard")
   @@map("questions")
