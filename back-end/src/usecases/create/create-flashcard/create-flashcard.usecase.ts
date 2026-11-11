@@ -1,7 +1,7 @@
-import { CardDesign } from "../../domain/entity/CardDesign";
-import { FlashCard } from "../../domain/entity/FlashCard";
-import { FlashCardGateway } from "../../domain/gateway/FlashCard.gateway";
-import { Usecase } from "../usecase";
+import { CardDesign } from "../../../domain/entity/CardDesign";
+import { FlashCard } from "../../../domain/entity/FlashCard";
+import { FlashCardGateway } from "../../../domain/gateway/FlashCard.gateway";
+import { Usecase } from "../../usecase";
 import { CreateFlashCardInputDto, CreateFlashCardOutputDto } from "./create-flashcard.dto";
 
 export class CreateFlashCardUsecase implements Usecase<CreateFlashCardInputDto, CreateFlashCardOutputDto> {

@@ -1,8 +1,8 @@
-import { Alternatives } from "../../domain/entity/Alternatives";
-import { QuestionDesign } from "../../domain/entity/QuestionDesign";
-import { Questions } from "../../domain/entity/Questions";
-import { QuestionsGateway } from "../../domain/gateway/Questions.gateway";
-import { Usecase } from "../usecase";
+import { Alternatives } from "../../../domain/entity/Alternatives";
+import { QuestionDesign } from "../../../domain/entity/QuestionDesign";
+import { Questions } from "../../../domain/entity/Questions";
+import { QuestionsGateway } from "../../../domain/gateway/Questions.gateway";
+import { Usecase } from "../../usecase";
 import { CreateQuestionsInputDto, CreateQuestionsOutputDto } from "./create-questions.dto";
 
 export class CreateQuestionsUsecase implements Usecase<CreateQuestionsInputDto, CreateQuestionsOutputDto> {
