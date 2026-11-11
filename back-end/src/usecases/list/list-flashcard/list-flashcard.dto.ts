@@ -1,5 +1,5 @@
-import { FontType } from "../../domain/entity/shared/Font.enum";
-import { TextColorType } from "../../domain/entity/shared/TextColor.enum";
+import { FontType } from "../../../domain/entity/shared/Font.enum";
+import { TextColorType } from "../../../domain/entity/shared/TextColor.enum";
 
 export type ListFlashcardOutputDto = {
     flashcard: {

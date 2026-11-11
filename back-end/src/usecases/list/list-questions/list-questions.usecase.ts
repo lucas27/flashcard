@@ -1,6 +1,6 @@
-import { Questions } from "../../domain/entity/Questions";
-import { QuestionsGateway } from "../../domain/gateway/Questions.gateway";
-import { Usecase } from "../usecase";
+import { Questions } from "../../../domain/entity/Questions";
+import { QuestionsGateway } from "../../../domain/gateway/Questions.gateway";
+import { Usecase } from "../../usecase";
 import { ListQuestionsOutputDto } from "./list-questions.dto";
 
 export class ListQuestionsUsecase implements Usecase<void, ListQuestionsOutputDto> {

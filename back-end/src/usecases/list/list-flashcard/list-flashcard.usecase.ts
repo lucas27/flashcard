@@ -1,5 +1,5 @@
-import { FlashCardGateway } from "../../domain/gateway/FlashCard.gateway";
-import { Usecase } from "../usecase";
+import { FlashCardGateway } from "../../../domain/gateway/FlashCard.gateway";
+import { Usecase } from "../../usecase";
 import { ListFlashcardOutputDto } from "./list-flashcard.dto";
 
 export class ListFlashcardUsecase implements Usecase<void, ListFlashcardOutputDto> {

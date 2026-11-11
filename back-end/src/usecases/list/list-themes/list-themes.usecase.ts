@@ -1,5 +1,5 @@
-import { ThemesGateway } from "../../domain/gateway/Themes.gateway";
-import { Usecase } from "../usecase";
+import { ThemesGateway } from "../../../domain/gateway/Themes.gateway";
+import { Usecase } from "../../usecase";
 import { ListThemesOutputDto } from "./list-themes.dto";
 
 export class ListThemesUsecase implements Usecase<void, ListThemesOutputDto> {
