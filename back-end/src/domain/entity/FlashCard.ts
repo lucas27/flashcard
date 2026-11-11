@@ -1,11 +1,13 @@
 import { CardDesign } from "./CardDesign";
+import { SubTopics } from "./SubTopics";
 
 export type FlashCardProps = {
     readonly id?: bigint,
     question: string,
     ask: string,
     design: CardDesign,
-    themeId: number
+    themeId: number,
+    subTopicId?: number
 }
 
 export class FlashCard {
@@ -15,13 +17,15 @@ export class FlashCard {
         question: string,
         ask: string,
         design: CardDesign,
-        themeId: number
+        themeId: number,
+        subTopicId?: number
     ) {
         return new FlashCard({
             question: question,
             ask: ask,
             design: design,
-            themeId: themeId
+            themeId: themeId,
+            subTopicId: subTopicId
         });
     }
 
@@ -30,14 +34,16 @@ export class FlashCard {
         question: string,
         ask: string,
         design: CardDesign,
-        themeId: number
+        themeId: number,
+        subTopicId?: number
     ) {
         return new FlashCard({
             id: id,
             question: question,
             ask: ask,
             design: design,
-            themeId: themeId
+            themeId: themeId,
+            subTopicId: subTopicId
         });
     }
     
@@ -59,6 +65,10 @@ export class FlashCard {
     
     public get themeId() {
         return this.props.themeId;
+    }
+
+    public get subTopicId() {
+        return this.props.subTopicId;
     }
 
     public changeQuestion(question: string): void {

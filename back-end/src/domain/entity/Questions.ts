@@ -6,7 +6,8 @@ export type QuestionsProps = {
     questionStem: string,
     themeId: number,
     design: QuestionDesign,
-    alternatives: Alternatives[]
+    alternatives: Alternatives[],
+    subTopicId?: number
 };
 
 export class Questions {
@@ -16,13 +17,15 @@ export class Questions {
         questionStem: string,
         themeId: number,
         design: QuestionDesign,
-        alternatives: Alternatives[]
+        alternatives: Alternatives[],
+        subTopicId?: number
     ) {
         return new Questions({
             questionStem: questionStem,
             themeId: themeId,
             design: design,
-            alternatives: alternatives
+            alternatives: alternatives,
+            subTopicId: subTopicId
         });
     }
     public static with(
@@ -30,14 +33,16 @@ export class Questions {
         questionStem: string,
         themeId: number,
         design: QuestionDesign,
-        alternatives: Alternatives[]
+        alternatives: Alternatives[],
+        subTopicId?: number
     ) {
         return new Questions({
             id: id,
             questionStem: questionStem,
             themeId: themeId,
             design: design,
-            alternatives: alternatives
+            alternatives: alternatives,
+            subTopicId: subTopicId
         })
     }
 
@@ -59,6 +64,10 @@ export class Questions {
 
     public get alternatives() {
         return this.props.alternatives;
+    }
+
+    public get subTopicId() {
+        return this.props.subTopicId;
     }
 
     public changeQuestionStem(questionStem: string) {
