@@ -1,7 +1,9 @@
 export type CreateSubTopicsInputDto = {
-    name: string
+    name: string,
+    themeId: number
 };
 
 export type CreateSubTopicsOutputDto = {
-    id: number;
-}
+    id: number,
+    themeId: number
+};
