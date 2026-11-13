@@ -13,6 +13,8 @@ model Themes {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+
+  subTopic SubTopics?
   card    FlashCard[]
   Question Questions[]
 
@@ -26,8 +28,11 @@ model SubTopics {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  card    FlashCard[]
-  Question Questions[]
+  themeId     Int           @unique   @map("theme_id")
+  
+  card        FlashCard[]
+  Question    Questions[]
+  themes      Themes        @relation(fields: [themeId], references: [id])
 
   @@schema("flashcard")
   @@map("sub_topics")
