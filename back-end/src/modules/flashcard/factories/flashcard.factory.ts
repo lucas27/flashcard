@@ -3,8 +3,8 @@ import { ListFlashcardRoute } from "../../../infrastructure/api/fastify/routes/f
 import { Route } from "../../../infrastructure/api/fastify/routes/route";
 import { FlashCardRepositoryPrisma } from "../../../infrastructure/repositories/flashcard.repository.prisma";
 import prisma from "../../../package/prisma/prisma";
-import { CreateFlashCardUsecase } from "../../../usecases/create-flashcard/create-flashcard.usecase";
-import { ListFlashcardUsecase } from "../../../usecases/list-flashcard/list-flashcard.usecase";
+import { CreateFlashCardUsecase } from "../../../usecases/create/create-flashcard/create-flashcard.usecase";
+import { ListFlashcardUsecase } from "../../../usecases/list/list-flashcard/list-flashcard.usecase";
 
 export class FlashCardFactory {
     public static makeRoutes(): Route[] {

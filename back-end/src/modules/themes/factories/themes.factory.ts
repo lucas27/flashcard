@@ -3,8 +3,8 @@ import { CreateThemesRoute } from "../../../infrastructure/api/fastify/routes/th
 import { ListThemesRoute } from "../../../infrastructure/api/fastify/routes/themes/list-themes.fastify.route";
 import { ThemeRepositoryPrisma } from "../../../infrastructure/repositories/theme.repository.prisma";
 import prisma from "../../../package/prisma/prisma";
-import { CreateThemesUsecase } from "../../../usecases/create-themes/create-themes.usecase";
-import { ListThemesUsecase } from "../../../usecases/list-themes/list-themes.usecase";
+import { CreateThemesUsecase } from "../../../usecases/create/create-themes/create-themes.usecase";
+import { ListThemesUsecase } from "../../../usecases/list/list-themes/list-themes.usecase";
 
 export class ThemesFactory {
     public static makeRoutes(): Route[] {

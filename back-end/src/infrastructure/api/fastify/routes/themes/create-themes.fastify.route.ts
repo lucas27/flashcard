@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CreateThemesInputDto } from "../../../../../usecases/create-themes/create-themes.dto";
-import { CreateThemesUsecase } from "../../../../../usecases/create-themes/create-themes.usecase";
+import { CreateThemesInputDto } from "../../../../../usecases/create/create-themes/create-themes.dto";
+import { CreateThemesUsecase } from "../../../../../usecases/create/create-themes/create-themes.usecase";
 import { HttpMethod, Route } from "../route";
 import { CreateThemesResponseDto } from "./create-themes.route.dto";
 

@@ -4,9 +4,9 @@ import { ListQuestionsRoute } from "../../../infrastructure/api/fastify/routes/q
 import { Route } from "../../../infrastructure/api/fastify/routes/route";
 import { QuestionsRepositoryPrisma } from "../../../infrastructure/repositories/questions.repository.prisma";
 import prisma from "../../../package/prisma/prisma";
-import { CreateQuestionsUsecase } from "../../../usecases/create-questions/create-questions.usecase";
+import { CreateQuestionsUsecase } from "../../../usecases/create/create-questions/create-questions.usecase";
 import { FindAllByThemeIdQuestionsUsecase } from "../../../usecases/findAllByThemeId-questions/findAllByThemeId-questions.usecase";
-import { ListQuestionsUsecase } from "../../../usecases/list-questions/list-questions.usecase";
+import { ListQuestionsUsecase } from "../../../usecases/list/list-questions/list-questions.usecase";
 
 export class QuestionsFactory {
     public static makeRoutes(): Route[] {
